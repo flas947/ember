@@ -1,36 +1,115 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Brawl Simulator 3D</title>
+    <title>Brawlstars Game</title>
     <style>
+      :root {
+        --bg: #0f1115;
+        --panel: #1a1d24;
+        --panel-border: #2d333d;
+        --text: #f4f4f4;
+        --muted: #a8b0ba;
+      }
+
+      * { box-sizing: border-box; }
+
       html, body {
         margin: 0;
         padding: 0;
-        height: 100%;
         width: 100%;
+        height: 100%;
         overflow: hidden;
-        background: #0b1020;
-        font-family: Arial, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      body {
+        position: relative;
+      }
+
+      .ad-top {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 96px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--panel);
+        border-bottom: 1px solid var(--panel-border);
+        z-index: 2;
+      }
+
+      .ad-slot {
+        width: min(728px, calc(100vw - 24px));
+        height: 90px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(180deg, #1e2229, #161a20);
+        border: 1px solid var(--panel-border);
+        border-radius: 6px;
+        overflow: hidden;
+        color: var(--muted);
+      }
+
+      .game-frame-wrap {
+        position: absolute;
+        top: 96px;
+        left: 0;
+        right: 0;
+        bottom: 0;
       }
 
       iframe {
-        position: absolute;
-        inset: 0;
         width: 100%;
         height: 100%;
         border: 0;
-        background: #0b1020;
+        display: block;
+        background: #000;
+      }
+
+      @media (max-width: 768px) {
+        .ad-top {
+          height: 72px;
+        }
+
+        .ad-slot {
+          width: calc(100vw - 16px);
+          height: 60px;
+        }
+
+        .game-frame-wrap {
+          top: 72px;
+        }
       }
     </style>
   </head>
   <body>
-    <iframe
-      src="https://playgama.com/export/game/brawl-simulator-3d?clid=p_dc935da8-22da-4d5c-a3a5-25ade6855652"
-      allow="fullscreen; accelerometer; camera; clipboard-read; clipboard-write; screen-wake-lock; speaker-selection; web-share; geolocation; gyroscope; microphone; xr-spatial-tracking; autoplay; encrypted-media; picture-in-picture; payment; publickey-credentials-get; publickey-credentials-create; storage-access; attribution-reporting; browsing-topics"
-      allowfullscreen
-      title="Brawl Simulator 3D"
-    ></iframe>
+    <div class="ad-top">
+      <div class="ad-slot">
+        <!-- Replace these with your real AdSense client + slot IDs -->
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:728px;height:90px"
+             data-ad-client="YOUR_AD_CLIENT_ID"
+             data-ad-slot="YOUR_AD_SLOT"></ins>
+        <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+      </div>
+    </div>
+
+    <div class="game-frame-wrap">
+      <iframe
+        src="https://playgama.com/export/game/brawl-simulator-3d?clid=p_dc935da8-22da-4d5c-a3a5-25ade6855652"
+        allowfullscreen
+        title="Brawlstars Game"
+      ></iframe>
+    </div>
   </body>
 </html>
