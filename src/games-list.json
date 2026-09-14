@@ -15,7 +15,7 @@
   "id": "Brawstars",
   "title": "Brawstars",
   "genre": "Arcade",
-  "file": "Brawlstars/Index.html",
+  "file": "Brawlstars/loader.html",
   "mono": "BS",
   "gradFrom": "#F2A65A",
   "gradTo": "#E15A7A",
