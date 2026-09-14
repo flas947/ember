@@ -28,5 +28,19 @@
   "mono": "SP",
   "gradFrom": "#F2A65A",
   "gradTo": "#E15A7A",
-  "thumb": "Brawstars/ER2.png"}
+  "thumb": "Brawstars/ER2.png"
+},
+
+
+  {
+"id": "playgama-demo",
+"title": "Playgama Demo",
+"genre": "Arcade",
+"file": "https://playgama.com/game/brawl-simulator-3d?clid=p_dc935da8-22da-4d5c-a3a5-25ade6855652",
+"mono": "PG",
+"gradFrom": "#F2A65A",
+"gradTo": "#E15A7A",
+"thumb": ""
+}
+
 ]

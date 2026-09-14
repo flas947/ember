@@ -58,9 +58,10 @@ Your API key never reaches the browser; only `scripts/server.js` reads it.
 ## Adding your own games
 
 The hub ships with an empty game catalog. See `ADDING-GAMES.md` — in
-short: drop an HTML game into `public/games/`, add an entry to
-`src/games-list.json` (or run `npm run add-game`), and it shows up as a
-tile that opens the game in an embedded iframe.
+short: drop an HTML game into `public/games/`, or paste a full
+`https://` widget/game URL, add an entry to `src/games-list.json`
+(or run `npm run add-game`), and it shows up as a tile that opens the
+game in an embedded iframe.
 
 ## Build
 

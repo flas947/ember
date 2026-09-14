@@ -717,6 +717,11 @@ function renderGamesPanel(panel) {
     });
   }
 
+  function resolveGameThumbUrl(thumb) {
+    if (!thumb) return '';
+    return /^https?:\/\//i.test(thumb.trim()) ? thumb.trim() : `/games/${thumb.trim()}`;
+  }
+
   function paintGrid() {
     const grid = panel.querySelector('#gameGrid');
     const list = visibleGames();
@@ -735,7 +740,7 @@ function renderGamesPanel(panel) {
       tile.dataset.id = g.id;
       const isFav = state.favorites.has(g.id);
       const cover = g.thumb
-        ? `<div class="cover" style="background-image:url('/games/${g.thumb}')"></div>`
+        ? `<div class="cover" style="background-image:url('${resolveGameThumbUrl(g.thumb)}')"></div>`
         : `<div class="cover" style="background:linear-gradient(150deg, ${g.gradFrom || '#F2A65A'}, ${g.gradTo || '#E15A7A'})">${g.mono || g.title.slice(0, 2).toUpperCase()}</div>`;
       tile.innerHTML = `
         ${cover}
@@ -1355,7 +1360,9 @@ async function loadGameFrame(frame, src, gameId) {
     restoreGameProgress(frame, gameId);
   };
 
-  if (!state.settings.blockAds) {
+  const isExternalGame = /^https?:\/\//i.test(src);
+
+  if (isExternalGame || !state.settings.blockAds) {
     frame.src = src;
     startGameAutoSave(frame, gameId);
     return;
@@ -1400,7 +1407,7 @@ function closeModal() {
 function openGameModal(g) {
   const root = document.getElementById('modalRoot');
   root.dataset.gameId = g.id;
-  const src = `/games/${g.file}`;
+  const src = /^https?:\/\//i.test((g.file || '').trim()) ? g.file.trim() : `/games/${g.file}`;
 
   root.innerHTML = `
     <div class="modal-backdrop" id="modalBackdrop">

@@ -16,16 +16,16 @@ async function main() {
   const games = JSON.parse(raw);
 
   console.log(`Adding a game (${games.length} in the catalog now).`);
-  console.log('The game file itself should already be sitting in public/games/.\n');
+  console.log('Use either a local HTML file under public/games/ or a full https:// URL such as a Playgama widget.\n');
 
   const id = (await ask('Unique id (e.g. "asteroids"): ')).trim();
   const title = (await ask('Title: ')).trim();
   const genre = (await ask('Genre (free text, optional): ')).trim();
-  const file = (await ask('File path, relative to public/games/ (e.g. "asteroids/index.html"): ')).trim();
+  const file = (await ask('Game path or URL (e.g. "asteroids/index.html" or "https://widgets.playgama.com/..."): ')).trim();
   const mono = (await ask('Monogram, 1-2 letters for the cover if no thumbnail (optional): ')).trim().slice(0, 2);
   const gradFrom = (await ask('Cover gradient color 1, hex (optional, default #F2A65A): ')).trim() || '#F2A65A';
   const gradTo = (await ask('Cover gradient color 2, hex (optional, default #E15A7A): ')).trim() || '#E15A7A';
-  const thumb = (await ask('Thumbnail path, relative to public/games/ (optional): ')).trim();
+  const thumb = (await ask('Thumbnail path or URL (optional): ')).trim();
 
   games.push({ id, title, genre, file, mono, gradFrom, gradTo, thumb });
   await writeFile(DATA_PATH, JSON.stringify(games, null, 2) + '\n');

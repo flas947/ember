@@ -1,12 +1,14 @@
 # Adding a game
 
 The hub no longer ships any placeholder games — it's an empty shell that
-loads **your own** HTML games from `public/games/`.
+loads **your own** HTML games from `public/games/`, or a direct external
+`https://` URL such as a Playgama widget.
 
 ## Steps
 
-1. Drop your game's folder/file into `public/games/`, e.g.
-   `public/games/asteroids/index.html` or `public/games/asteroids.html`.
+1. Either drop your game's folder/file into `public/games/`, e.g.
+   `public/games/asteroids/index.html`, or use an external game URL such as
+   `https://widgets.playgama.com/...`.
 2. Add an entry to `src/games-list.json`:
 
 ```json
@@ -22,6 +24,21 @@ loads **your own** HTML games from `public/games/`.
 }
 ```
 
+Or, for a Playgama widget:
+
+```json
+{
+  "id": "playgama-demo",
+  "title": "Playgama Demo",
+  "genre": "Arcade",
+  "file": "https://widgets.playgama.com/your-widget-url",
+  "mono": "PG",
+  "gradFrom": "#F2A65A",
+  "gradTo": "#E15A7A",
+  "thumb": ""
+}
+```
+
 3. Run `npm run dev` (or refresh) — it shows up in the grid.
 
 ## Field reference
@@ -31,17 +48,21 @@ loads **your own** HTML games from `public/games/`.
 | `id`       | yes      | Unique string.                                                        |
 | `title`    | yes      | Shown on the tile and in the modal.                                    |
 | `genre`    | no       | Free text, shown as a small tag. Also searchable.                     |
-| `file`     | yes      | Path **relative to `public/games/`** to the game's HTML entry point.  |
+| `file`     | yes      | Either a path **relative to `public/games/`** or a full `https://` URL to the game's HTML/widget entry point. |
 | `mono`     | no       | 1–2 letters shown on the cover when there's no `thumb`.                |
 | `gradFrom` / `gradTo` | no | Cover gradient colors (hex) used when there's no `thumb`.    |
-| `thumb`    | no       | Path relative to `public/games/` to a thumbnail image, if you have one.|
+| `thumb`    | no       | Path relative to `public/games/` or a full `https://` URL to a thumbnail image, if you have one. |
 
 ## How it's loaded
 
-Clicking a tile opens the game in an `<iframe src="/games/<file>">` inside a
-large modal, plus an "Open in new tab" link for games that want the full
-window (fullscreen APIs, keyboard capture, etc). Nothing about the game
-itself is modified — whatever you drop in `public/games/` runs as-is.
+Clicking a tile opens the game in an iframe inside a large modal.
+
+- Local game entries use `/games/<file>`.
+- External `https://` entries are loaded directly in the iframe as-is.
+
+Nothing about local game files is modified — whatever you drop in
+`public/games/` runs as-is. External URLs are passed through directly
+without the local HTML sanitizer.
 
 ## Using the helper script
 
