@@ -1,0 +1,32 @@
+[
+{
+  "id": "subway-surfers-ny",
+  "title": "Subway Surfers NYC",
+  "genre": "Arcade",
+  "file": "subway-surfers-ny/index.html",
+  "mono": "SS",
+  "gradFrom": "#F2A65A",
+  "gradTo": "#E15A7A",
+  "thumb": "subway-surfers-ny/NewYorkIcon.png"
+},
+
+
+{
+  "id": "Brawstars",
+  "title": "Brawstars",
+  "genre": "Arcade",
+  "file": "Brawlstars/Index.html",
+  "mono": "BS",
+  "gradFrom": "#F2A65A",
+  "gradTo": "#E15A7A",
+  "thumb": "Brawstars/ER2.png"},
+{
+  "id": "SnakePuzzle",
+  "title": "Snake Puzzle",
+  "genre": "Puzzle",
+  "file": "SnakePuzzle/index.html",
+  "mono": "SP",
+  "gradFrom": "#F2A65A",
+  "gradTo": "#E15A7A",
+  "thumb": "Brawstars/ER2.png"}
+]

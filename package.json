@@ -1,0 +1,17 @@
+{
+  "name": "ember-newtab",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "A browser new-tab page with an offline/online AI panel, notes, account/settings, and a game hub for your own local HTML games.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "server": "node scripts/server.js",
+    "add-game": "node scripts/add-game.js"
+  },
+  "devDependencies": {
+    "vite": "^5.4.10"
+  }
+}
